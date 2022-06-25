@@ -1,0 +1,23 @@
+.listItem {
+    display: flex;
+    justify-content: space-between;
+}
+
+.removeBtn {
+    margin-left: 15px;
+    width: 70px;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+    font-size: 10pt;
+
+    background-color: #f5f269;
+}
+
+.removeBtn:active {
+    background-color: orange;
+}
+
+.list {
+    padding: 0;
+}

@@ -1,0 +1,34 @@
+.labelText {
+    margin-right: 10px;
+    font-size: 16pt;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px dashed #ffa500;
+    border-radius: 4px;
+}
+
+.input {
+    margin-bottom: 20px;
+    width: 200px;
+    height: 25px;
+}
+
+
+.submitBtn {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    font-size: 10pt;
+
+    background-color: #f5f269;
+}
+
+.submitBtn:active {
+    background-color: #ffa500;
+}

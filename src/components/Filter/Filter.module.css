@@ -1,0 +1,15 @@
+.label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.labelText {
+    font-size: 16pt;
+    margin-bottom: 15px;
+}
+
+.input {
+    width: 200px;
+    height: 25px;
+}
