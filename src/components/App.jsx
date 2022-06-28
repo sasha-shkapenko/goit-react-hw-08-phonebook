@@ -16,12 +16,12 @@ class App extends Component {
   }
 
   formSubmitHandler = ({ name, number }) => {
+    const onList = this.state.contacts.find(contact => contact.name === name);
+    if (onList) {
+      alert('This contact is already added');
+      return;
+    }
     this.setState(({ contacts }) => {
-      const onList = this.state.contacts.find(contact => contact.name === name);
-      if (onList) {
-        alert('This contact is already added');
-        return;
-      }
       return {
         contacts: [
           {
