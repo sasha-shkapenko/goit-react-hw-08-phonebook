@@ -37,12 +37,6 @@ function App() {
     const normalizedFilter = filter.toLocaleLowerCase();
     return contacts.filter(contact => contact.name.toLocaleLowerCase().includes(normalizedFilter));
   }
-  // useEffect(() => {
-  //   const contactList = JSON.parse(localStorage.getItem('contacts'));
-  //   if (contactList) {
-  //     setContacts(contactList);
-  //   }
-  // }, []);
 
   return (
     <div className="container">
