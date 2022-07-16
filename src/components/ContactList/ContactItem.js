@@ -8,6 +8,7 @@ const ContactItem = ({ contact, onDeleteContact }) => {
       <p>{name}: {number}</p>
       <button
         className={s.removeBtn}
+        type="button"
         onClick={() => { onDeleteContact(id) }}>remove</button>
     </li>
   );
