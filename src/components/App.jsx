@@ -25,7 +25,7 @@ function App() {
   }
 
   const deleteContact = contactId => {
-    setContacts(state => { state.filter(contact => contact.id !== contactId) })
+    setContacts(state => state.filter(contact => contact.id !== contactId));
   }
 
   const changeFilter = e => {
