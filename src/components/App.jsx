@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { nanoid } from 'nanoid';
 import ContactForm from "./ContactForm/ContactForm";
 import Filter from "./Filter";
 import ContactList from "./ContactList";
+import useLocalStorage from "hooks/useLocalStorage";
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useLocalStorage('contacts', []);
   const [filter, setFilter] = useState('');
 
   const formSubmitHandler = ({ name, number }) => {
@@ -36,15 +37,12 @@ function App() {
     const normalizedFilter = filter.toLocaleLowerCase();
     return contacts.filter(contact => contact.name.toLocaleLowerCase().includes(normalizedFilter));
   }
-  useEffect(() => {
-    const contactList = JSON.parse(localStorage.getItem('contacts'));
-    if (contactList) {
-      setContacts(contactList);
-    }
-  }, []);
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   const contactList = JSON.parse(localStorage.getItem('contacts'));
+  //   if (contactList) {
+  //     setContacts(contactList);
+  //   }
+  // }, []);
 
   return (
     <div className="container">
