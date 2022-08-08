@@ -22,7 +22,6 @@ const contactSlice = createSlice({
         },
         changeFilter(state, { payload }) {
             state.filter = payload;
-            state.items = [...state.items, state.items.filter(item => item.name.toLowerCase().includes(payload))]
         },
     }
 });
