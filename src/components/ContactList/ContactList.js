@@ -8,7 +8,7 @@ const ContactList = () => {
     const { data: contacts, isSuccess, isFetching } = useGetContactsQuery();
     const filter = useSelector(state => state.filter);
     const filteredContacts = () => {
-        if (filter === '' || !filter) {
+        if (filter === '') {
             return contacts;
         }
         return contacts.filter(contact =>
