@@ -4,7 +4,7 @@ import { changeFilter } from 'redux/contactSlice';
 
 const Filter = () => {
     const dispatch = useDispatch();
-    const filter = useSelector(state => state.items.filter);
+    const filter = useSelector(state => state.filter);
 
     return (
         <label className={s.label}>

@@ -1,28 +1,26 @@
 import { useState } from "react";
-import { nanoid } from 'nanoid';
-import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from "redux/contactSlice";
+import { useAddContactMutation } from "redux/contactsApi";
+import { useGetContactsQuery } from "redux/contactsApi";
+
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-
-  const dispatch = useDispatch();
-  const items = useSelector(state => state.items.items);
+  const [phone, setNumber] = useState('');
+  const [addContact, { isLoading }] = useAddContactMutation();
+  const { data: contacts } = useGetContactsQuery();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const onList = items.find(contact => contact.name === name);
+    const onList = contacts.find(contact => contact.name === name);
     if (onList) {
       alert('This contact is already added');
       return;
     }
-    dispatch(addContact({
-      id: nanoid(),
+    addContact({
       name,
-      number,
-    }));
+      phone,
+    });
     reset();
   }
   const handleInput = (e) => {
@@ -68,14 +66,14 @@ export default function ContactForm() {
             type="tel"
             name="number"
             className={s.input}
-            value={number}
+            value={phone}
             onChange={handleInput}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
         </label>
-        <button className={s.submitBtn} type="submit">Add contact</button>
+        <button className={s.submitBtn} type="submit" disabled={isLoading}>Add contact</button>
       </form>
 
     </>

@@ -1,26 +1,33 @@
-import { ContactItem } from "./ContactItem";
 import { useSelector } from 'react-redux';
+import { ContactItem } from "./ContactItem";
+import { useGetContactsQuery } from "redux/contactsApi";
 
 import s from './ContactList.module.css'
 
-const getFilteredContacts = (items, filter) => {
-    const normalizedFilter = filter.toLocaleLowerCase();
-    return items.filter(item => item.name.toLocaleLowerCase().includes(normalizedFilter));
-}
 const ContactList = () => {
-    const items = useSelector(state => state.items.items);
-    const filter = useSelector(state => state.items.filter);
-    const filteredContacts = getFilteredContacts(items, filter);
+    const { data: contacts, isSuccess, isFetching } = useGetContactsQuery();
+    const filter = useSelector(state => state.filter);
+    const filteredContacts = () => {
+        if (filter === '' || !filter) {
+            return contacts;
+        }
+        return contacts.filter(contact =>
+            contact.name.toLowerCase().includes(filter.toLowerCase())
+        );
 
+    };
+    const items = filteredContacts();
     return (
         <ul className={s.list}>
-            {filteredContacts.map(({ id, name, number }) => (
-                <ContactItem
-                    key={id}
-                    contact={{ id, name, number }}
-                />
 
-            ))}
+            {isSuccess && contacts && !isFetching &&
+                items.map(({ id, name, phone }) => (
+                    <ContactItem
+                        key={id}
+                        contact={{ id, name, phone }}
+                    />
+
+                ))}
         </ul>
     )
 };
