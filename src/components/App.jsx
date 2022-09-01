@@ -1,16 +1,14 @@
-import ContactForm from "./ContactForm/ContactForm";
-import Filter from "./Filter";
-import ContactList from "./ContactList";
+import { Routes, Route, NavLink } from "react-router-dom";
+import ContactsPage from "pages/ContactsPage/ContactsPage";
 
 function App() {
 
   return (
-    <div className="container">
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
+    <div>
+      <NavLink to='/contacts'>Contacts</NavLink>
+      <Routes>
+        <Route path='/contacts' component={ContactsPage} />
+      </Routes>
     </div>
   );
 
