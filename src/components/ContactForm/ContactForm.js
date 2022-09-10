@@ -12,7 +12,6 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const onList = contacts.find(contact => contact.name === name);
     if (onList) {
       alert('This contact is already added');

@@ -16,7 +16,6 @@ export const contactsApi = createApi({
     endpoints: builder => ({
         getContacts: builder.query({
             query: () => '/contacts',
-            keepUnusedDataFor: 1,
             providesTags: ['Contact'],
         }),
         addContact: builder.mutation({
@@ -33,7 +32,7 @@ export const contactsApi = createApi({
                 method: 'DELETE',
             }),
             invalidatesTags: ['Contact'],
-        })
+        }),
     }),
 })
 
