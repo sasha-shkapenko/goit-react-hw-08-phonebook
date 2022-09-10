@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAddContactMutation } from "redux/contactsApi";
-import { useGetContactsQuery } from "redux/contactsApi";
+import { useAddContactMutation } from "redux/contacts/contactsApi";
+import { useGetContactsQuery } from "redux/contacts/contactsApi";
 
 import s from './ContactForm.module.css';
 
@@ -12,6 +12,7 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const onList = contacts.find(contact => contact.name === name);
     if (onList) {
       alert('This contact is already added');

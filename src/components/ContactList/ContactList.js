@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { ContactItem } from "./ContactItem";
-import { useGetContactsQuery } from "redux/contactsApi";
+import { useGetContactsQuery } from "redux/contacts/contactsApi";
 
 import s from './ContactList.module.css'
 
