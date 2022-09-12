@@ -1,0 +1,12 @@
+.wrap {
+    display: flex;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 14pt;
+}
+
+.link:not(:last-child) {
+    margin-right: 20px;
+}

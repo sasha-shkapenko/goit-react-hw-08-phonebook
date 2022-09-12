@@ -3,14 +3,16 @@ import ContactList from "components/ContactList/ContactList";
 import Filter from "components/Filter/Filter";
 import React from "react";
 
+import s from './ContactsPage.module.css';
+
 const ContactsPage = () => {
     return (
         <>
-            <div className="container">
+            <div className={s.container}>
 
-                <h1>Phonebook</h1>
+                <h1 className={s.title}>Phonebook</h1>
                 <ContactForm />
-                <h2>Contacts</h2>
+                <h2 className={s.subTitle}>Contacts</h2>
                 <Filter />
                 <ContactList />
             </div>

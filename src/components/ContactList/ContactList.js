@@ -21,10 +21,10 @@ const ContactList = () => {
         <ul className={s.list}>
 
             {isSuccess && contacts && !isFetching &&
-                items.map(({ id, name, phone }) => (
+                items.map(({ id, name, number }) => (
                     <ContactItem
                         key={id}
-                        contact={{ id, name, phone }}
+                        contact={{ id, name, number }}
                     />
 
                 ))}

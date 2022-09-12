@@ -1,0 +1,8 @@
+.wrap {
+    display: flex;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 14pt;
+}

@@ -1,5 +1,8 @@
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
+import Nav from 'react-bootstrap/Nav';
+
+import s from './AppBar.module.css'
 
 import Navigation from "components/Navigation";
 import UserMenu from "components/UserMenu";
@@ -9,9 +12,13 @@ export const AppBar = () => {
     const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
     return (
-        <header>
-            <Navigation />
-            {isLoggedIn ? <UserMenu /> : <AuthenticationNav />}
-        </header>
+        <Nav variant="tabs" defaultActiveKey="/home" className={s.nav}>
+            <Nav.Item>
+                <Navigation />
+            </Nav.Item>
+            <Nav.Item>
+                {isLoggedIn ? <UserMenu /> : <AuthenticationNav />}
+            </Nav.Item>
+        </Nav>
     )
 }

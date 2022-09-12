@@ -3,10 +3,12 @@ import { useAddContactMutation } from "redux/contacts/contactsApi";
 import { useGetContactsQuery } from "redux/contacts/contactsApi";
 
 import s from './ContactForm.module.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setNumber] = useState('');
+  const [number, setNumber] = useState('');
   const [addContact, { isLoading }] = useAddContactMutation();
   const { data: contacts } = useGetContactsQuery();
 
@@ -19,7 +21,7 @@ export default function ContactForm() {
     }
     addContact({
       name,
-      phone,
+      number,
     });
     reset();
   }
@@ -46,35 +48,38 @@ export default function ContactForm() {
 
   return (
     <>
-      <form className={s.form} onSubmit={handleSubmit}>
-        <label>
-          <span className={s.labelText}>Name</span>
-          <input
+      <Form className={s.form} onSubmit={handleSubmit}>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
             type="text"
             name="name"
-            className={s.input}
             value={name}
             onChange={handleInput}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required />
-        </label>
+            required
+          />
+        </Form.Group>
 
-        <label>
-          <span className={s.labelText}>Number</span>
-          <input
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Number</Form.Label>
+          <Form.Control
             type="tel"
             name="number"
-            className={s.input}
-            value={phone}
+            value={number}
             onChange={handleInput}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </label>
-        <button className={s.submitBtn} type="submit" disabled={isLoading}>Add contact</button>
-      </form>
+        </Form.Group>
+
+        <Button variant="outline-primary" type="submit" disabled={isLoading}>
+          Add contact
+        </Button>
+      </Form>
 
     </>
   );
